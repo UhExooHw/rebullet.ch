@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rebullet.ch</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #000000;
+      --surface-color: rgba(20, 20, 30, 0.6);
+      --text-color: #ffffff;
+      --accent-color: #4fc3f7;
+      --border-radius: 12px;
+      --font-family: 'Noto Sans', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: 
+        radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px) center center / 20px 20px,
+        linear-gradient(135deg, #0d0d0d 0%, #1c1c2d 100%);
+      color: var(--text-color);
+      font-family: var(--font-family);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 1rem 2rem;
+      gap: 1rem;
+    }
+
+    .header img {
+      height: 64px;
+      width: 64px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(79, 195, 247, 0.6);
+      object-fit: cover;
+    }
+
+    .header-title {
+      color: var(--accent-color);
+      font-weight: 700;
+      font-size: 2rem;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .card {
+      background-color: var(--surface-color);
+      padding: 4rem 5rem;
+      border-radius: var(--border-radius);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 25px #4fc3f7, 0 0 40px rgba(79, 195, 247, 0.6), inset 0 0 20px rgba(79, 195, 247, 0.2);
+      text-align: center;
+      max-width: 700px;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 0 30px #4fc3f7, 0 0 60px rgba(79, 195, 247, 0.8), inset 0 0 25px rgba(79, 195, 247, 0.3);
+    }
+
+    .card-text {
+      font-size: 1.4rem;
+      color: var(--text-color);
+      line-height: 1.8;
+    }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="https://raw.githubusercontent.com/UhExooHw/rebulet.ch/d276bae07e06acde8fcd29a0208326ca445a6808/aYjBdZp45XKsQlBJvPI_FGG5SVXDd8cqvMa8wnuijj8IEcwD_TNzNJPeAsN6VC7WWgjV-JTT3E4DIXw4XQ_UGkvs.jpg" alt="Avatar">
+    <div class="header-title">rebullet.ch</div>
+  </div>
+  <div class="main">
+    <div class="card">
+      <div class="card-text">
+        <p>Hello! Welcome to my website!</p>
+        <p>Wanna get in touch? — Write me: <a href="mailto:admin@rebullet.ch">admin@rebullet.ch</a></p>
+        <p>Wanna check out my projects? — Visit my GitHub:<br>
+        <a href="https://github.com/UhExooHw" target="_blank">https://github.com/UhExooHw</a></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
