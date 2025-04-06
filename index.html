@@ -1,57 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>rebullet.ch</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://raw.githubusercontent.com/UhExooHw/rebulet.ch/d276bae07e06acde8fcd29a0208326ca445a6808/aYjBdZp45XKsQlBJvPI_FGG5SVXDd8cqvMa8wnuijj8IEcwD_TNzNJPeAsN6VC7WWgjV-JTT3E4DIXw4XQ_UGkvs.jpg" type="image/jpeg"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --bg-color: #000000;
+      --bg-color: #000;
       --surface-color: rgba(20, 20, 30, 0.6);
-      --text-color: #ffffff;
-      --text-subtle: #cccccc;
+      --text-color: #fff;
       --accent-color: #4fc3f7;
       --highlight-color: #72dbff;
       --border-radius: 12px;
       --font-family: 'Noto Sans', sans-serif;
     }
 
+    [data-accent="red"] {
+      --accent-color: #f44336;
+      --highlight-color: #ff7961;
+    }
+
+    [data-accent="yellow"] {
+      --accent-color: #ffd54f;
+      --highlight-color: #fff176;
+    }
+
     body {
-      margin: 0;
-      background:
-        radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px) center center / 20px 20px,
-        linear-gradient(135deg, #0d0d0d 0%, #1c1c2d 100%);
-      color: var(--text-color);
       font-family: var(--font-family);
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      background:
+        radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px) center / 20px 20px,
+        linear-gradient(135deg, var(--bg-color), #1c1c2d);
+      background-color: var(--bg-color);
+      margin: 0;
+      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     }
 
     .header {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       padding: 1rem 2rem;
-      gap: 1rem;
       max-width: 1200px;
-      width: 100%;
       margin: 0 auto;
       box-sizing: border-box;
+      width: 100%;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
 
     .header img {
       height: 64px;
       width: 64px;
       border-radius: 12px;
-      box-shadow: 0 0 12px rgba(79, 195, 247, 0.6);
+      box-shadow: 0 0 12px var(--accent-color);
       object-fit: cover;
+      transition: box-shadow 0.3s;
     }
 
     .header-title {
       color: var(--accent-color);
       font-weight: 700;
       font-size: 2rem;
+    }
+
+    .theme-switchers {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .switcher {
+      background-color: var(--surface-color);
+      border: none;
+      color: var(--accent-color);
+      padding: 0.4rem 0.7rem;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+
+    .switcher:hover {
+      background-color: rgba(255,255,255,0.1);
     }
 
     .main {
@@ -68,14 +103,15 @@
       padding: 2.5rem 2rem;
       border-radius: var(--border-radius);
       backdrop-filter: blur(8px);
-      box-shadow: 0 0 25px #4fc3f7, 0 0 40px rgba(79, 195, 247, 0.6), inset 0 0 20px rgba(79, 195, 247, 0.2);
+      box-shadow: 0 0 25px var(--accent-color), 0 0 40px var(--accent-color), inset 0 0 20px var(--accent-color), 0 0 0 3px #000;
+      animation: pulseGlow 2.5s ease-in-out infinite;
       max-width: 600px;
       width: 100%;
       transition: all 0.3s ease;
     }
 
     .card:hover {
-      box-shadow: 0 0 30px #4fc3f7, 0 0 60px rgba(79, 195, 247, 0.8), inset 0 0 25px rgba(79, 195, 247, 0.3);
+      box-shadow: 0 0 30px var(--accent-color), 0 0 60px var(--accent-color), inset 0 0 25px var(--accent-color);
     }
 
     .card-text {
@@ -88,34 +124,24 @@
     .card-text p {
       opacity: 0;
       animation: fadeIn ease-in 1s forwards;
-      margin: 0 0 1rem 0;
+      margin: 0 0 1rem;
     }
 
-    .card-text p:nth-child(1) {
-      animation-delay: 0.5s;
-      color: var(--highlight-color);
-      font-style: normal;
-    }
-
-    .card-text p:nth-child(2) {
-      animation-delay: 1.5s;
-    }
-
-    .card-text p:nth-child(3) {
-      animation-delay: 2.5s;
-    }
-
-    .card-text p:nth-child(4) {
-      animation-delay: 3.5s;
-    }
+    .card-text p:nth-child(1) { animation-delay: 0.5s; color: var(--highlight-color); }
+    .card-text p:nth-child(2) { animation-delay: 1.5s; }
+    .card-text p:nth-child(3) { animation-delay: 2.5s; }
+    .card-text p:nth-child(4) { animation-delay: 3.5s; }
 
     .video-container {
       width: 100%;
       max-width: 800px;
-      aspect-ratio: 16 / 9;
-      box-shadow: 0 0 20px rgba(79, 195, 247, 0.4);
+      aspect-ratio: 16/9;
+      box-shadow: 0 0 25px var(--accent-color), 0 0 40px var(--accent-color), inset 0 0 20px var(--accent-color);
+      animation: pulseGlow 2.5s ease-in-out infinite, fadeIn 1s ease-in forwards;
+      animation-delay: 4.5s;
       border-radius: var(--border-radius);
       overflow: hidden;
+      opacity: 0;
     }
 
     iframe {
@@ -125,33 +151,66 @@
     }
 
     @keyframes fadeIn {
-      0% { opacity: 0; }
-      50% { opacity: 0; }
+      0%, 50% { opacity: 0; }
       100% { opacity: 1; }
     }
 
-    a {
-      color: var(--accent-color);
-      text-decoration: none;
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow: 0 0 20px var(--accent-color), 0 0 30px var(--accent-color), inset 0 0 15px var(--accent-color), 0 0 0 3px #000;
+      }
+      50% {
+        box-shadow: 0 0 35px var(--accent-color), 0 0 55px var(--accent-color), inset 0 0 25px var(--accent-color), 0 0 0 3px #000;
+      }
+    }
+
+    a,
+    a:visited,
+    a:active,
+    a:focus,
+    a:hover {
+      color: var(--accent-color) !important;
+      font-family: var(--font-family);
+      text-decoration: none !important;
+      cursor: pointer;
+      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     }
 
     a:hover {
-      text-decoration: underline;
+      text-decoration: underline !important;
     }
 
-    @media (max-width: 600px) {
+    .footer-info {
+      padding: 1rem 1.5rem;
+      margin: 0;
+      max-width: 300px;
+      flex: 1;
+      background-color: var(--surface-color);
+      border-radius: var(--border-radius);
+      color: var(--highlight-color);
+      font-family: var(--font-family);
+    }
+
+    .footer-info p {
+      color: var(--highlight-color);
+      margin: 0.5rem 0;
+    }
+
+    @media (max-width: 800px) {
+      .theme-switchers {
+        margin-top: 1rem;
+      }
       .card {
         padding: 2rem 1rem;
       }
-
       .header {
         padding: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
       }
-
       .header-title {
         font-size: 1.5rem;
       }
-
       .header img {
         height: 48px;
         width: 48px;
@@ -159,37 +218,87 @@
     }
   </style>
 </head>
-<body>
+<body data-theme="dark" data-accent="default">
   <div class="header">
-    <img src="https://raw.githubusercontent.com/UhExooHw/rebulet.ch/d276bae07e06acde8fcd29a0208326ca445a6808/aYjBdZp45XKsQlBJvPI_FGG5SVXDd8cqvMa8wnuijj8IEcwD_TNzNJPeAsN6VC7WWgjV-JTT3E4DIXw4XQ_UGkvs.jpg" alt="Avatar">
-    <div class="header-title">rebullet.ch</div>
+    <div class="logo">
+      <img src="https://raw.githubusercontent.com/UhExooHw/rebulet.ch/d276bae07e06acde8fcd29a0208326ca445a6808/aYjBdZp45XKsQlBJvPI_FGG5SVXDd8cqvMa8wnuijj8IEcwD_TNzNJPeAsN6VC7WWgjV-JTT3E4DIXw4XQ_UGkvs.jpg" alt="Avatar">
+      <div class="header-title">rebullet.ch</div>
+    </div>
+    <div class="theme-switchers">
+      <button class="switcher" onclick="setAccent('default')">💠</button>
+      <button class="switcher" onclick="setAccent('red')">🔴</button>
+      <button class="switcher" onclick="setAccent('yellow')">🟡</button>
+    </div>
   </div>
+
   <div class="main">
     <div class="card">
       <div class="card-text">
         <p>Hi there. I am Andrew ReBullet (@andrewrebullet, @uhexoohw), a software engineer.</p>
         <p>Email: <a href="mailto:admin@rebullet.ch">admin@rebullet.ch</a></p>
-        <p>GitHub: <a href="https://github.com/UhExooHw" target="_blank">@UhExooHw</a></p>
-        <p>Spotify: <a href="https://open.spotify.com/playlist/0jFcazCyeL3NjpqbmRMaXs?si=b87d4e1a3b464312" target="_blank">Open Playlist</a></p>
+        <p>GitHub: <a href="https://github.com/UhExooHw" target="_blank" rel="noopener noreferrer">@UhExooHw</a></p>
+        <p>Spotify: <a href="https://open.spotify.com/playlist/0jFcazCyeL3NjpqbmRMaXs?si=b87d4e1a3b464312" target="_blank" rel="noopener noreferrer">Open Playlist</a></p>
       </div>
     </div>
-    <div class="video-container" style="opacity: 0; animation: fadeIn ease-in 1s forwards; animation-delay: 4.5s;">
-      <iframe src="https://www.youtube.com/embed/kR-9AIXWIG4" title="CYBERPUNK 2077 Johnny Silverhand Playing Guitar | 7 HOURS" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/kR-9AIXWIG4" title="CYBERPUNK 2077 Johnny Silverhand Playing Guitar | 7 HOURS" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
   </div>
-<script>
-  function stealthPing() {
-    fetch("https://www.google.ch/", {
-      method: "GET",
-      mode: "no-cors",
-      cache: "no-cache"
-    }).catch(() => {});
 
-    const nextPing = Math.floor(Math.random() * 6000) + 9000;
-    setTimeout(stealthPing, nextPing);
-  }
+  <footer style="margin-top: 4rem; background-color: var(--surface-color); padding: 2rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; flex-wrap: wrap;">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <img src="https://raw.githubusercontent.com/UhExooHw/rebulet.ch/d276bae07e06acde8fcd29a0208326ca445a6808/aYjBdZp45XKsQlBJvPI_FGG5SVXDd8cqvMa8wnuijj8IEcwD_TNzNJPeAsN6VC7WWgjV-JTT3E4DIXw4XQ_UGkvs.jpg" alt="Avatar" style="height: 48px; width: 48px; border-radius: 8px; object-fit: cover; box-shadow: 0 0 6px var(--accent-color);">
+      <span style="color: var(--accent-color); font-family: var(--font-family); font-size: 1rem;">©2025 ReBullet</span>
+    </div>
+    <div class="footer-info">
+      <p id="ip">IP: Loading...</p>
+      <p id="timezone">Timezone: Loading...</p>
+      <p id="device">OS: Loading...</p>
+    </div>
+  </footer>
 
-  setTimeout(stealthPing, 5000);
-</script>
+  <script>
+    function setAccent(color) {
+      document.body.setAttribute("data-accent", color);
+    }
+
+    function stealthPing() {
+      fetch("https://www.google.ch/", {
+        method: "GET",
+        mode: "no-cors",
+        cache: "no-cache"
+      }).catch(() => {});
+      const nextPing = Math.floor(Math.random() * 6000) + 9000;
+      setTimeout(stealthPing, nextPing);
+    }
+
+    function getOS() {
+      const ua = navigator.userAgent;
+      if (/windows/i.test(ua)) return 'Windows';
+      if (/macintosh|mac os x/i.test(ua)) return 'macOS';
+      if (/android/i.test(ua)) return 'Android';
+      if (/linux/i.test(ua)) return 'Linux';
+      if (/iphone|ipad|ipod/i.test(ua)) return 'iOS';
+      return 'Unknown OS';
+    }
+
+    setTimeout(stealthPing, 5000);
+
+    window.addEventListener('DOMContentLoaded', () => {
+      fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('ip').textContent = `IP: ${data.ip}`;
+        })
+        .catch(() => {
+          document.getElementById('ip').textContent = `IP: unavailable`;
+        });
+
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      document.getElementById('timezone').textContent = `Timezone: ${timezone}`;
+      document.getElementById('device').textContent = `OS: ${getOS()}`;
+    });
+  </script>
 </body>
 </html>
