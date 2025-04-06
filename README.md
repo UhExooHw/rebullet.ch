@@ -25,6 +25,3 @@ This website is built with:
 - **YouTube Embed API** – for video playback
 - **[ipify API](https://www.ipify.org/)** – to detect public IP address
 - **GitHub Pages** – for hosting (or use your own static server)
-
-## 📂 Folder Structure
-
