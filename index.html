@@ -10,22 +10,23 @@
       --bg-color: #000000;
       --surface-color: rgba(20, 20, 30, 0.6);
       --text-color: #ffffff;
+      --text-subtle: #cccccc;
       --accent-color: #4fc3f7;
+      --highlight-color: #72dbff;
       --border-radius: 12px;
       --font-family: 'Noto Sans', sans-serif;
     }
 
     body {
       margin: 0;
-      background: 
+      background:
         radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px) center center / 20px 20px,
         linear-gradient(135deg, #0d0d0d 0%, #1c1c2d 100%);
       color: var(--text-color);
       font-family: var(--font-family);
       display: flex;
       flex-direction: column;
-      height: 100vh;
-      overflow: hidden;
+      min-height: 100vh;
     }
 
     .header {
@@ -33,6 +34,10 @@
       align-items: center;
       padding: 1rem 2rem;
       gap: 1rem;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      box-sizing: border-box;
     }
 
     .header img {
@@ -50,21 +55,22 @@
     }
 
     .main {
-      flex: 1;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      position: relative;
+      padding: 2rem;
+      gap: 2rem;
     }
 
     .card {
       background-color: var(--surface-color);
-      padding: 4rem 5rem;
+      padding: 2.5rem 2rem;
       border-radius: var(--border-radius);
       backdrop-filter: blur(8px);
       box-shadow: 0 0 25px #4fc3f7, 0 0 40px rgba(79, 195, 247, 0.6), inset 0 0 20px rgba(79, 195, 247, 0.2);
-      text-align: center;
-      max-width: 700px;
+      max-width: 600px;
+      width: 100%;
       transition: all 0.3s ease;
     }
 
@@ -73,9 +79,55 @@
     }
 
     .card-text {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       color: var(--text-color);
-      line-height: 1.8;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    .card-text p {
+      opacity: 0;
+      animation: fadeIn ease-in 1s forwards;
+      margin: 0 0 1rem 0;
+    }
+
+    .card-text p:nth-child(1) {
+      animation-delay: 0.5s;
+      color: var(--highlight-color);
+      font-style: normal;
+    }
+
+    .card-text p:nth-child(2) {
+      animation-delay: 1.5s;
+    }
+
+    .card-text p:nth-child(3) {
+      animation-delay: 2.5s;
+    }
+
+    .card-text p:nth-child(4) {
+      animation-delay: 3.5s;
+    }
+
+    .video-container {
+      width: 100%;
+      max-width: 800px;
+      aspect-ratio: 16 / 9;
+      box-shadow: 0 0 20px rgba(79, 195, 247, 0.4);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
     }
 
     a {
@@ -85,6 +137,25 @@
 
     a:hover {
       text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 2rem 1rem;
+      }
+
+      .header {
+        padding: 1rem;
+      }
+
+      .header-title {
+        font-size: 1.5rem;
+      }
+
+      .header img {
+        height: 48px;
+        width: 48px;
+      }
     }
   </style>
 </head>
@@ -96,12 +167,29 @@
   <div class="main">
     <div class="card">
       <div class="card-text">
-        <p>Hello! Welcome to my website!</p>
-        <p>Wanna get in touch? — Write me: <a href="mailto:admin@rebullet.ch">admin@rebullet.ch</a></p>
-        <p>Wanna check out my projects? — Visit my GitHub:<br>
-        <a href="https://github.com/UhExooHw" target="_blank">https://github.com/UhExooHw</a></p>
+        <p>Hi there. I am Andrew ReBullet (@andrewrebullet, @uhexoohw), a software engineer.</p>
+        <p>Email: <a href="mailto:admin@rebullet.ch">admin@rebullet.ch</a></p>
+        <p>GitHub: <a href="https://github.com/UhExooHw" target="_blank">@UhExooHw</a></p>
+        <p>Spotify: <a href="https://open.spotify.com/playlist/0jFcazCyeL3NjpqbmRMaXs?si=b87d4e1a3b464312" target="_blank">Open Playlist</a></p>
       </div>
     </div>
+    <div class="video-container" style="opacity: 0; animation: fadeIn ease-in 1s forwards; animation-delay: 4.5s;">
+      <iframe src="https://www.youtube.com/embed/kR-9AIXWIG4" title="CYBERPUNK 2077 Johnny Silverhand Playing Guitar | 7 HOURS" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
   </div>
+<script>
+  function stealthPing() {
+    fetch("https://www.google.ch/", {
+      method: "GET",
+      mode: "no-cors",
+      cache: "no-cache"
+    }).catch(() => {});
+
+    const nextPing = Math.floor(Math.random() * 6000) + 9000;
+    setTimeout(stealthPing, nextPing);
+  }
+
+  setTimeout(stealthPing, 5000);
+</script>
 </body>
 </html>
