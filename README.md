@@ -24,4 +24,3 @@ This website is built with:
 - **Google Fonts** – [`Noto Sans`](https://fonts.google.com/specimen/Noto+Sans)
 - **YouTube Embed API** – for video playback
 - **[ipify API](https://www.ipify.org/)** – to detect public IP address
-- **GitHub Pages** – for hosting (or use your own static server)
