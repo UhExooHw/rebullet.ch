@@ -99,15 +99,17 @@
     }
 
     .card {
-      background-color: var(--surface-color);
-      padding: 2.5rem 2rem;
-      border-radius: var(--border-radius);
-      backdrop-filter: blur(8px);
-      box-shadow: 0 0 25px var(--accent-color), 0 0 40px var(--accent-color), inset 0 0 20px var(--accent-color), 0 0 0 3px #000;
-      animation: pulseGlow 2.5s ease-in-out infinite;
-      max-width: 600px;
-      width: 100%;
-      transition: all 0.3s ease;
+     background-color: var(--surface-color);
+     padding: 2.5rem 2rem;
+     border-radius: var(--border-radius);
+     backdrop-filter: blur(8px);
+     box-shadow: 0 0 25px var(--accent-color), 0 0 40px var(--accent-color), inset 0 0 20px var(--accent-color), 0 0 0 3px #000;
+     animation: pulseGlow 2.5s ease-in-out infinite, fadeIn 0.5s ease-in forwards;
+     animation-delay: 1.5s;
+     max-width: 600px;
+     width: 100%;
+     transition: all 0.3s ease;
+     opacity: 0;
     }
 
     .card:hover {
