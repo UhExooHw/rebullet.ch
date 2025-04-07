@@ -11,7 +11,7 @@ You can visit the website here: [https://rebullet.ch](https://rebullet.ch)
 - Elegant glassmorphism UI with smooth glow effects
 - Responsive layout for both desktop and mobile
 - Animated intro and content fade-in
-- Accent color switcher (💠 default, 🔴 red, 🟡 yellow)
+- Accent color switcher (🔵 default, 🔴 red, 🟡 yellow)
 - Embedded YouTube video section
 - Device + IP info via client-side detection and APIs
 
