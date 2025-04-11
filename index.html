@@ -27,6 +27,29 @@
       --highlight-color: #fff176;
     }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1; /* Контейнер займет всё пространство между хедером и футером */
+}
+
+footer {
+  background-color: var(--surface-color);
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+}
+
     body {
       font-family: var(--font-family);
       background:
@@ -137,19 +160,6 @@
     .card-text p:nth-child(6) { animation-delay: 3.0s; }
     .card-text p:nth-child(7) { animation-delay: 3.5s; }
 
-
-    .video-container {
-      width: 100%;
-      max-width: 800px;
-      aspect-ratio: 16/9;
-      box-shadow: 0 0 25px var(--accent-color), 0 0 40px var(--accent-color), inset 0 0 20px var(--accent-color);
-      animation: pulseGlow 2.5s ease-in-out infinite, fadeIn 1s ease-in forwards;
-      animation-delay: 4.5s;
-      border-radius: var(--border-radius);
-      overflow: hidden;
-      opacity: 0;
-    }
-
     iframe {
       width: 100%;
       height: 100%;
@@ -184,22 +194,6 @@
 
     a:hover {
       text-decoration: underline !important;
-    }
-
-    .footer-info {
-      padding: 1rem 1.5rem;
-      margin: 0;
-      max-width: 300px;
-      flex: 1;
-      background-color: var(--surface-color);
-      border-radius: var(--border-radius);
-      color: var(--highlight-color);
-      font-family: var(--font-family);
-    }
-
-    .footer-info p {
-      color: var(--highlight-color);
-      margin: 0.5rem 0;
     }
 
     @media (max-width: 800px) {
@@ -237,32 +231,29 @@
     </div>
   </div>
 
-  <div class="main">
+<div class="main">
     <div class="card">
-      <div class="card-text">
-        <p style="color: var(--highlight-color);">Hi, I’m Andrew ReBullet</p>
-        <p style="color: var(--highlight-color);">Software engineer and open source enthusiast.</p>
-        <p style="color: var(--highlight-color);">Welcome to my digital haven.</p>        
-        <p>Email: <a href="mailto:admin@rebullet.ch">admin@rebullet.ch</a></p>
-        <p>GitHub: <a href="https://github.com/UhExooHw" target="_blank" rel="noopener noreferrer">@UhExooHw</a></p>
-        <p>Spotify: <a href="https://open.spotify.com/playlist/0jFcazCyeL3NjpqbmRMaXs?si=b87d4e1a3b464312" target="_blank" rel="noopener noreferrer">Open Playlist</a></p>
-      </div>
+        <div class="card-text">
+            <p style="color: var(--highlight-color);">Hi, I’m Andrew ReBullet</p>
+            <p style="color: var(--highlight-color);">Software engineer and open source enthusiast.</p>
+            <p style="color: var(--highlight-color);">Welcome to my digital haven.</p>        
+            <p>Email: <a href="mailto:admin@rebullet.ch">admin@rebullet.ch</a></p>
+            <p>Spotify: <a href="https://open.spotify.com/playlist/0jFcazCyeL3NjpqbmRMaXs?si=b87d4e1a3b464312" target="_blank" rel="noopener noreferrer">Open Playlist</a></p>
+        </div>
     </div>
 
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/eBGUAQRT7fI" title="eBGUAQRT7fI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>    
-  </div>
+<div class="card" style="animation-delay: 6.0s;">
+   <div class="card-text">
+      <p style="color: var(--highlight-color); font-size: 1.5rem; font-weight: bold;">My Projects:</p>
+      <p><a href="https://github.com/UhExooHw/sim-spoof" target="_blank" rel="noopener noreferrer">Sim Spoof</a></p>
+   </div>
+</div>
+</div>
 
   <footer style="margin-top: 4rem; background-color: var(--surface-color); padding: 2rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; flex-wrap: wrap;">
     <div style="display: flex; align-items: center; gap: 1rem;">
       <img src="https://raw.githubusercontent.com/UhExooHw/rebulet.ch/d276bae07e06acde8fcd29a0208326ca445a6808/aYjBdZp45XKsQlBJvPI_FGG5SVXDd8cqvMa8wnuijj8IEcwD_TNzNJPeAsN6VC7WWgjV-JTT3E4DIXw4XQ_UGkvs.jpg" alt="Avatar" style="height: 48px; width: 48px; border-radius: 8px; object-fit: cover; box-shadow: 0 0 6px var(--accent-color);">
       <span style="color: var(--accent-color); font-family: var(--font-family); font-size: 1rem;">©2025 ReBullet. This site is fully open source.</span>
-    </div>
-    <div class="footer-info">
-      <p id="ip">IP: Loading...</p>
-      <p id="timezone">Timezone: Loading...</p>
-      <p id="device">OS: Loading...</p>
     </div>
   </footer>
 
