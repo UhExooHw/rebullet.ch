@@ -5,70 +5,84 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>rebullet.ch</title>
   <link rel="icon" href="https://raw.githubusercontent.com/UhExooHw/rebulet.ch/d276bae07e06acde8fcd29a0208326ca445a6808/aYjBdZp45XKsQlBJvPI_FGG5SVXDd8cqvMa8wnuijj8IEcwD_TNzNJPeAsN6VC7WWgjV-JTT3E4DIXw4XQ_UGkvs.jpg" type="image/jpeg"/>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,64..150,500..900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --bg-color: #000;
-      --surface-color: rgba(20, 20, 30, 0.6);
-      --text-color: #fff;
-      --accent-color: #4fc3f7;
-      --highlight-color: #72dbff;
-      --border-radius: 12px;
-      --font-family: 'Noto Sans', sans-serif;
+      --border-radius: 8px;
+      --font-heading: 'Roboto Flex', sans-serif;
+      --font-content: 'Roboto', sans-serif;
     }
 
-    [data-accent="red"] {
-      --accent-color: #f44336;
-      --highlight-color: #ff7961;
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --surface-color: #1e1e1e;
+      --text-color: #ffffff;
+      --accent-color: #ffffff;
+      --foreground-color: #ffffff;
+      --cursor-color: #ffffff;
     }
 
-    [data-accent="yellow"] {
-      --accent-color: #ffd54f;
-      --highlight-color: #fff176;
+    [data-theme="light"] {
+      --bg-color: #ffffff;
+      --surface-color: #f5f5f5;
+      --text-color: #000000;
+      --accent-color: #000000;
+      --foreground-color: #000000;
+      --cursor-color: #000000;
     }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      cursor: none;
+    }
 
-.main {
-  flex: 1; /* Контейнер займет всё пространство между хедером и футером */
-}
-
-footer {
-  background-color: var(--surface-color);
-  padding: 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
-  flex-wrap: wrap;
-  width: 100%;
-  box-sizing: border-box;
-}
+    html, body {
+      height: 100%;
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-content);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      display: flex;
+      flex-direction: column;
+    }
 
     body {
-      font-family: var(--font-family);
-      background:
-        radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px) center / 20px 20px,
-        linear-gradient(135deg, var(--bg-color), #1c1c2d);
-      background-color: var(--bg-color);
-      margin: 0;
-      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+      min-height: 100vh;
+    }
+
+    .custom-cursor {
+      background: var(--cursor-color);
+      border-radius: 50%;
+      height: 16px;
+      width: 16px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 1000;
     }
 
     .header {
+      position: sticky;
+      top: 0;
+      background: var(--surface-color);
+      padding: 1.5rem 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      box-sizing: border-box;
-      width: 100%;
     }
 
     .logo {
@@ -77,226 +91,197 @@ footer {
       gap: 1rem;
     }
 
-    .header img {
-      height: 64px;
-      width: 64px;
-      border-radius: 12px;
-      box-shadow: 0 0 12px var(--accent-color);
+    .logo img {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--border-radius);
       object-fit: cover;
-      transition: box-shadow 0.3s;
     }
 
     .header-title {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 800;
       color: var(--accent-color);
-      font-weight: 700;
-      font-size: 2rem;
     }
 
-    .theme-switchers {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .switcher {
-      background-color: var(--surface-color);
+    .theme-toggle {
+      background: none;
       border: none;
-      color: var(--accent-color);
-      padding: 0.4rem 0.7rem;
+      color: var(--text-color);
+      font-family: var(--font-content);
+      font-size: 1rem;
+      padding: 0.5rem;
       border-radius: var(--border-radius);
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: background 0.3s;
+      transition: background-color 0.25s ease;
     }
 
-    .switcher:hover {
-      background-color: rgba(255,255,255,0.1);
+    .theme-toggle:hover {
+      background: var(--accent-color);
+      color: var(--bg-color);
     }
 
     .main {
+      flex: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      gap: 2rem;
+      gap: 4rem;
     }
 
     .card {
-     background-color: var(--surface-color);
-     padding: 2.5rem 2rem;
-     border-radius: var(--border-radius);
-     backdrop-filter: blur(8px);
-     box-shadow: 0 0 25px var(--accent-color), 0 0 40px var(--accent-color), inset 0 0 20px var(--accent-color), 0 0 0 3px #000;
-     animation: pulseGlow 2.5s ease-in-out infinite, fadeIn 0.5s ease-in forwards;
-     animation-delay: 1.5s;
-     max-width: 600px;
-     width: 100%;
-     transition: all 0.3s ease;
-     opacity: 0;
+      background: var(--surface-color);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease-out forwards;
     }
 
-    .card:hover {
-      box-shadow: 0 0 30px var(--accent-color), 0 0 60px var(--accent-color), inset 0 0 25px var(--accent-color);
-    }
-
-    .card-text {
-      font-size: 1.2rem;
-      color: var(--text-color);
-      line-height: 1.6;
-      text-align: left;
+    .card:nth-child(2) {
+      animation-delay: 0.2s;
     }
 
     .card-text p {
-      opacity: 0;
-      animation: fadeIn ease-in 1s forwards;
-      margin: 0 0 1rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: var(--foreground-color);
     }
 
-    .card-text p:nth-child(1) { animation-delay: 0.5s; color: var(--highlight-color); }
-    .card-text p:nth-child(2) { animation-delay: 1.0s; }
-    .card-text p:nth-child(3) { animation-delay: 1.5s; }
-    .card-text p:nth-child(4) { animation-delay: 2.0s; }
-    .card-text p:nth-child(5) { animation-delay: 2.5s; }
-    .card-text p:nth-child(6) { animation-delay: 3.0s; }
-    .card-text p:nth-child(7) { animation-delay: 3.5s; }
+    .card-text p.highlight {
+      color: var(--accent-color);
+      font-weight: 500;
+      font-size: 1.25rem;
+    }
 
-    iframe {
+    .card-text a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+
+    .card-text a:hover {
+      color: var(--text-color);
+      text-decoration: underline;
+    }
+
+    footer {
+      background: var(--surface-color);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--foreground-color);
       width: 100%;
-      height: 100%;
-      border: none;
     }
 
-    @keyframes fadeIn {
-      0%, 50% { opacity: 0; }
-      100% { opacity: 1; }
+    footer img {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--border-radius);
+      vertical-align: middle;
+      margin-right: 0.5rem;
     }
 
-    @keyframes pulseGlow {
-      0%, 100% {
-        box-shadow: 0 0 20px var(--accent-color), 0 0 30px var(--accent-color), inset 0 0 15px var(--accent-color), 0 0 0 3px #000;
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
-      50% {
-        box-shadow: 0 0 35px var(--accent-color), 0 0 55px var(--accent-color), inset 0 0 25px var(--accent-color), 0 0 0 3px #000;
-      }
     }
 
-    a,
-    a:visited,
-    a:active,
-    a:focus,
-    a:hover {
-      color: var(--accent-color) !important;
-      font-family: var(--font-family);
-      text-decoration: none !important;
-      cursor: pointer;
-      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    }
-
-    a:hover {
-      text-decoration: underline !important;
-    }
-
-    @media (max-width: 800px) {
-      .theme-switchers {
-        margin-top: 1rem;
+    @media (max-width: 768px) {
+      * {
+        cursor: auto;
       }
-      .card {
-        padding: 2rem 1rem;
+
+      .custom-cursor {
+        display: none;
       }
-      .header {
-        padding: 1rem;
+
+      .header-content {
         flex-direction: column;
         align-items: flex-start;
+        gap: 1rem;
+        padding: 0 1rem;
       }
+
+      .main {
+        padding: 1rem;
+      }
+
+      .card {
+        padding: 1.5rem;
+      }
+
       .header-title {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
       }
-      .header img {
-        height: 48px;
-        width: 48px;
+
+      .theme-toggle {
+        font-size: 0.875rem;
+        padding: 0.25rem;
       }
     }
   </style>
 </head>
-<body data-theme="dark" data-accent="default">
+<body data-theme="dark">
+  <div class="custom-cursor" id="cursor"></div>
   <div class="header">
-    <div class="logo">
-      <img src="https://raw.githubusercontent.com/UhExooHw/rebulet.ch/d276bae07e06acde8fcd29a0208326ca445a6808/aYjBdZp45XKsQlBJvPI_FGG5SVXDd8cqvMa8wnuijj8IEcwD_TNzNJPeAsN6VC7WWgjV-JTT3E4DIXw4XQ_UGkvs.jpg" alt="Avatar">
-      <div class="header-title">rebullet.ch</div>
-    </div>
-    <div class="theme-switchers">
-      <button class="switcher" onclick="setAccent('default')">🔵</button>
-      <button class="switcher" onclick="setAccent('red')">🔴</button>
-      <button class="switcher" onclick="setAccent('yellow')">🟡</button>
+    <div class="header-content">
+      <div class="logo">
+        <img src="https://raw.githubusercontent.com/UhExooHw/rebulet.ch/d276bae07e06acde8fcd29a0208326ca445a6808/aYjBdZp45XKsQlBJvPI_FGG5SVXDd8cqvMa8wnuijj8IEcwD_TNzNJPeAsN6VC7WWgjV-JTT3E4DIXw4XQ_UGkvs.jpg" alt="Avatar">
+        <div class="header-title">rebullet.ch</div>
+      </div>
+      <button class="theme-toggle" id="theme-toggle">Light Theme</button>
     </div>
   </div>
 
-<div class="main">
+  <div class="main">
     <div class="card">
-        <div class="card-text">
-            <p style="color: var(--highlight-color);">Hi, I’m Andrew ReBullet</p>
-            <p style="color: var(--highlight-color);">Software engineer and open source enthusiast.</p>
-            <p style="color: var(--highlight-color);">Welcome to my digital haven.</p>        
-            <p>Email: <a href="mailto:admin@rebullet.ch">admin@rebullet.ch</a></p>
-            <p>Spotify: <a href="https://open.spotify.com/playlist/0jFcazCyeL3NjpqbmRMaXs?si=b87d4e1a3b464312" target="_blank" rel="noopener noreferrer">Open Playlist</a></p>
-        </div>
+      <div class="card-text">
+        <p class="highlight">Hi, I’m Andrew ReBullet</p>
+        <p class="highlight">Software engineer and open source enthusiast.</p>
+        <p>Email: <a href="mailto:admin@rebullet.ch">admin@rebullet.ch</a></p>
+      </div>
     </div>
 
-<div class="card" style="animation-delay: 6.0s;">
-   <div class="card-text">
-      <p style="color: var(--highlight-color); font-size: 1.5rem; font-weight: bold;">My Projects:</p>
-      <p><a href="https://github.com/UhExooHw/sim-spoof" target="_blank" rel="noopener noreferrer">Sim Spoof</a></p>
-   </div>
-</div>
-</div>
-
-  <footer style="margin-top: 4rem; background-color: var(--surface-color); padding: 2rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; flex-wrap: wrap;">
-    <div style="display: flex; align-items: center; gap: 1rem;">
-      <img src="https://raw.githubusercontent.com/UhExooHw/rebulet.ch/d276bae07e06acde8fcd29a0208326ca445a6808/aYjBdZp45XKsQlBJvPI_FGG5SVXDd8cqvMa8wnuijj8IEcwD_TNzNJPeAsN6VC7WWgjV-JTT3E4DIXw4XQ_UGkvs.jpg" alt="Avatar" style="height: 48px; width: 48px; border-radius: 8px; object-fit: cover; box-shadow: 0 0 6px var(--accent-color);">
-      <span style="color: var(--accent-color); font-family: var(--font-family); font-size: 1rem;">©2025 ReBullet. This site is fully open source.</span>
+    <div class="card">
+      <div class="card-text">
+        <p class="highlight">My Projects:</p>
+        <p><a href="https://github.com/UhExooHw/sim-spoof" target="_blank" rel="noopener noreferrer">ReBullet SIM Spoof Utility</a></p>
+      </div>
     </div>
+  </div>
+
+  <footer>
+    <img src="https://raw.githubusercontent.com/UhExooHw/rebulet.ch/d276bae07e06acde8fcd29a0208326ca445a6808/aYjBdZp45XKsQlBJvPI_FGG5SVXDd8cqvMa8wnuijj8IEcwD_TNzNJPeAsN6VC7WWgjV-JTT3E4DIXw4XQ_UGkvs.jpg" alt="Avatar">
+    <span>©2025 ReBullet. This site is fully open source.</span>
   </footer>
 
   <script>
-    function setAccent(color) {
-      document.body.setAttribute("data-accent", color);
+    if (window.innerWidth > 768) {
+      const cursor = document.getElementById('cursor');
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.top = `${e.clientY}px`;
+        cursor.style.left = `${e.clientX}px`;
+      });
     }
 
-    function stealthPing() {
-      fetch("https://www.google.ch/", {
-        method: "GET",
-        mode: "no-cors",
-        cache: "no-cache"
-      }).catch(() => {});
-      const nextPing = Math.floor(Math.random() * 6000) + 9000;
-      setTimeout(stealthPing, nextPing);
-    }
+    const toggleButton = document.getElementById('theme-toggle');
+    const body = document.body;
 
-    function getOS() {
-      const ua = navigator.userAgent;
-      if (/windows/i.test(ua)) return 'Windows';
-      if (/macintosh|mac os x/i.test(ua)) return 'macOS';
-      if (/android/i.test(ua)) return 'Android';
-      if (/linux/i.test(ua)) return 'Linux';
-      if (/iphone|ipad|ipod/i.test(ua)) return 'iOS';
-      return 'Unknown OS';
-    }
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    body.setAttribute('data-theme', savedTheme);
+    toggleButton.textContent = savedTheme === 'dark' ? 'Light Theme' : 'Dark Theme';
 
-    setTimeout(stealthPing, 5000);
-
-    window.addEventListener('DOMContentLoaded', () => {
-      fetch('https://api64.ipify.org?format=json')
-        .then(response => response.json())
-        .then(data => {
-          document.getElementById('ip').textContent = `IP: ${data.ip}`;
-        })
-        .catch(() => {
-          document.getElementById('ip').textContent = `IP: unavailable`;
-        });
-
-      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      document.getElementById('timezone').textContent = `Timezone: ${timezone}`;
-      document.getElementById('device').textContent = `OS: ${getOS()}`;
+    toggleButton.addEventListener('click', () => {
+      const currentTheme = body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      body.setAttribute('data-theme', newTheme);
+      toggleButton.textContent = newTheme === 'dark' ? 'Light Theme' : 'Dark Theme';
+      localStorage.setItem('theme', newTheme);
     });
   </script>
 </body>
