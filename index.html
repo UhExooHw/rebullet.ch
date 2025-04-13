@@ -167,7 +167,8 @@
       font-size: 1.125rem;
     }
 
-    .card-text a {
+    .card-text a,
+    .card-text a:visited {
       color: var(--accent-color);
       text-decoration: none;
       transition: color 0.25s ease;
@@ -193,6 +194,18 @@
       border-radius: var(--border-radius);
       vertical-align: middle;
       margin-right: 0.5rem;
+    }
+
+    .footer-link,
+    .footer-link:visited {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }   
+
+    .footer-link:hover {
+      color: var(--text-color);
+      text-decoration: underline;
     }
 
     @keyframes fadeInUp {
@@ -268,7 +281,7 @@
 
   <footer>
     <img src="https://raw.githubusercontent.com/UhExooHw/rebulet.ch/d276bae07e06acde8fcd29a0208326ca445a6808/aYjBdZp45XKsQlBJvPI_FGG5SVXDd8cqvMa8wnuijj8IEcwD_TNzNJPeAsN6VC7WWgjV-JTT3E4DIXw4XQ_UGkvs.jpg" alt="Avatar">
-    <span>©2025 ReBullet. This site is fully open source.</span>
+    <span>©2025 ReBullet. <a class="footer-link" href="https://github.com/UhExooHw/rebulet.ch" target="_blank" rel="noopener noreferrer">This site is fully open source.</a></span>
   </footer>
 
   <script>
