@@ -291,3 +291,8 @@ footer img {
     min-width: 100px;
   }
 }
+.current-language,
+.language-list li,
+.theme-toggle {
+  cursor: none !important;
+}
