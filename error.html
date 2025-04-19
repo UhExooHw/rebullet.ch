@@ -10,6 +10,7 @@
 </head>
 <body data-theme="dark">
   <script src="/loadFileData.js"></script>
+  <script src="/lang.js"></script>
   <div class="custom-cursor" id="cursor"></div>
   <div class="header">
     <div class="header-content">
@@ -17,20 +18,29 @@
         <img src="/assets/macho.jpg" alt="Avatar">
         <div class="header-title">rebullet.ch</div>
       </div>
-      <button class="theme-toggle" id="theme-toggle">Light Theme</button>
+      <div class="controls">
+        <div class="language-dropdown" id="language-dropdown">
+          <span class="current-language" id="current-language"></span>
+          <ul class="language-list" id="language-list">
+            <li data-lang="en">English</li>
+            <li data-lang="ru">Русский</li>
+          </ul>
+        </div>
+        <button class="theme-toggle" id="theme-toggle"></button>
+      </div>
     </div>
   </div>
   <div class="main">
     <div class="card">
       <div class="card-text">
-        <p class="highlight">Oops, something went wrong!</p>
-        <p>Please try again later.</p>
+        <p class="highlight" data-i18n="error"></p>
+        <p data-i18n="error-description"></p>
       </div>
     </div>
   </div>
   <footer>
     <img src="/assets/macho.jpg" alt="Avatar">
-    <span>©2025 ReBullet. <a class="footer-link" href="https://github.com/UhExooHw/rebulet.ch" target="_blank" rel="noopener noreferrer">This site is fully open source.</a></span>
+    <span data-i18n="footer"></span>
   </footer>
   <script src="/script.js"></script>
 </body>

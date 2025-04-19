@@ -1,0 +1,12 @@
+{
+  "intro": "Привет, я Andrew ReBullet",
+  "description": "Разработчик и любитель открытого кода.",
+  "email-label": "Почта: <a href=\"mailto:admin@rebullet.ch\">admin@rebullet.ch</a>",
+  "projects": "Мои проекты:",
+  "project-sim-spoof": "ReBullet SIM Spoof Utility",
+  "footer": "©2025 ReBullet. <a class=\"footer-link\" href=\"https://github.com/UhExooHw/rebulet.ch\" target=\"_blank\" rel=\"noopener noreferrer\">Этот сайт полностью с открытым кодом.</a>",
+  "error": "Упс, что-то пошло не так!",
+  "error-description": "Пожалуйста, попробуйте снова позже.",
+  "theme-toggle-light": "Светлая тема",
+  "theme-toggle-dark": "Темная тема"
+}
