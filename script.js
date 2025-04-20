@@ -19,9 +19,9 @@ body.setAttribute('data-theme', currentTheme);
 const path = window.location.pathname;
 let defaultLang;
 
-if (path.startsWith('/en')) {
+if (path.startsWith('/en') || path === '/error/en') {
   defaultLang = 'en';
-} else if (path.startsWith('/ru')) {
+} else if (path.startsWith('/ru') || path === '/error/ru') {
   defaultLang = 'ru';
 } else {
   const userLang = navigator.language || navigator.userLanguage;
@@ -79,7 +79,7 @@ languageList.querySelectorAll('li').forEach(item => {
       currentLanguage.textContent = lang === 'en' ? 'English' : 'Русский';
       toggleButton.textContent = currentTheme === 'dark' ? translations['theme-toggle-light'] : translations['theme-toggle-dark'];
       const currentPath = window.location.pathname;
-      const newPath = currentPath.includes('/error') ? `/${lang}/error` : `/${lang}`;
+      const newPath = currentPath.includes('/error') ? `/error/${lang}` : `/${lang}`;
       window.history.pushState(null, '', newPath);
     });
     languageList.classList.remove('show');
