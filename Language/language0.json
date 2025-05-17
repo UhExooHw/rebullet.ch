@@ -1,0 +1,16 @@
+{
+    "title": "rebullet.ch",
+    "description": "Personal website of a student, Android developer, web developer, and system administrator.",
+    "logo": "rebullet.ch",
+    "nav_home": "Home",
+    "nav_about": "About",
+    "nav_contact": "Contact",
+    "hero_title": "Welcome to my website",
+    "about_title": "Who I Am",
+    "about_description": "Just a cool guy trying to build his career.",
+    "contact_title": "Hit Me Up",
+    "contact_description": "Got an idea or just wanna chat? Drop me a line.",
+    "contact_button": "Send Email",
+    "footer_github": "GitHub",
+    "footer_steam": "Steam"
+}
