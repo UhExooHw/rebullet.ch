@@ -1,0 +1,86 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 20px 24px;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-red);
+}
+
+.menu {
+  display: flex;
+  gap: 30px;
+}
+
+.menu a {
+  text-decoration: none;
+  font-size: 14px;
+  color: var(--accent-blue);
+  transition: color 0.2s ease;
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.menu a:hover {
+  color: var(--text);
+  background: rgba(42, 127, 255, 0.22);
+}
+
+.menu a:focus-visible {
+  outline: 1px solid var(--accent-blue);
+  outline-offset: 2px;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 8px;
+}
+
+.lang-switcher button {
+  border: 1px solid currentColor;
+  background: transparent;
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.lang-switcher button[data-lang="en"] {
+  color: var(--accent-red);
+}
+
+.lang-switcher button[data-lang="ru"] {
+  color: var(--accent-blue);
+}
+
+.lang-switcher button.active {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.lang-switcher button:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.lang-switcher button:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 2px;
+}

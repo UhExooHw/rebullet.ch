@@ -1,0 +1,23 @@
+@media (max-width: 980px) {
+  .nav {
+    flex-wrap: wrap;
+    padding: 16px;
+  }
+
+  .menu {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    gap: 16px;
+    padding-top: 4px;
+  }
+
+  .section,
+  .section.right {
+    min-height: auto;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 130px 16px 34px;
+    gap: 20px;
+  }
+}

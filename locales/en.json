@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "title": "Andrew ReBullet"
+  },
+  "brand": "Andrew ReBullet",
+
+  "menu": {
+    "about": "About",
+    "work": "Work",
+    "skills": "Skills",
+    "contact": "Contacts",
+    "langEn": "EN",
+    "langRu": "RU"
+  },
+
+  "about": {
+    "title": "About Me",
+    "text": "",
+    "avatarAlt": "Andrew ReBullet avatar",
+    "points": [
+      "Network Engineer.",
+      "English: B1 level.",
+      "Game Tester."
+    ]
+  },
+
+  "work": {
+    "title": "Work Experience",
+    "text": "",
+    "items": [
+      {
+        "icon": "Z",
+        "title": "Zoom Platform - Quality Assurance / Game Tester",
+        "meta": "2023-2024",
+        "description": "Checked product quality before release, tested features, and fixed issues manually."
+      },
+      {
+        "icon": "T",
+        "title": "Telegram Channel",
+        "meta": "2023-2024",
+        "description": "Moderated a Telegram channel with an audience of 20,000+."
+      }
+    ]
+  },
+
+  "skills": {
+    "title": "Core Skills",
+    "text": "",
+    "items": [
+      "Work with Windows Server and Linux",
+      "Basic network setup and troubleshooting",
+      "Server setup and maintenance",
+      "Manual testing and quality control",
+      "Bug tracking and reporting",
+      "Git and basic web (HTML / CSS)",
+      "Virtual machines and system tools",
+      "Software and hardware troubleshooting",
+      "Technical support experience",
+      "English (B1)",
+      "Russian (native)"
+    ]
+  },
+
+  "contact": {
+    "title": "Contacts",
+    "text": "",
+    "items": [
+      "Email: bamboo@rebullet.ch",
+      "GitHub: https://github.com/UhExooHw",
+      "Telegram: https://t.me/andrewrebullet"
+    ]
+  },
+
+  "footer": {
+    "name": "Andrew ReBullet",
+    "rights": "All rights reserved.",
+    "trademark": "All third-party names, logos, and trademarks are the property of their respective owners in the United States and other countries. They are used for identification purposes only and do not imply affiliation, sponsorship, or endorsement."
+  }
+}
